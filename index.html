@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports de Hotel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    header {
+      background-color:  #7A3E3E;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 5px;
+    }
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #47A992;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    footer{
+    text-align: center;
+    background-color: #47A992;
+    padding: 20px;
+}
+.copyright{
+    color: #000000;
+    font-size:13px;
+    margin: 20px; 
+    font-weight: bold;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reports de Hotel ABC</h1>
+  </header>
+  <div class="container">
+    <h2>Generar Reportes</h2>
+    <form id="report-form">
+      <label for="report-type">Seleccione el Tipo de Reporte:</label>
+      <select id="report-type">
+        <option value="reservas">Resúmenes de Reservas</option>
+        <option value="facturacion">Facturación y Cuentas</option>
+        <option value="ventas">Reportes de Ventas</option>
+        <option value="feedback">Feedback de Huéspedes</option>
+      </select>
+      <button type="button" id="generate-report">Generar Reporte</button>
+    </form>
+    <div id="report-output">
+      <!-- Aquí se mostrará el resultado del reporte generado -->
+    </div>
+  </div>
+  <script>
+    const generateReportButton = document.getElementById('generate-report');
+    const reportTypeSelect = document.getElementById('report-type');
+    const reportOutput = document.getElementById('report-output');
+  
+    generateReportButton.addEventListener('click', () => {
+      const selectedReport = reportTypeSelect.value;
+      let reportText = '';
+  
+      if (selectedReport === 'reservas') {
+      reportText = '<h3>Resúmenes de Reservas</h3>';
+      reportText += '<h4>Resumen de Reservas del Mes</h4>';
+      reportText += '<p>En el mes actual, hemos tenido un total de 120 reservas realizadas.</p>';
+      reportText += '<h4>Resumen de Reservas por Tipo de Habitación</h4>';
+      reportText += '<ul>';
+      reportText += '<li>Habitación Individual: 40 reservas</li>';
+      reportText += '<li>Habitación Doble: 60 reservas</li>';
+      reportText += '<li>Suite: 20 reservas</li>';
+      reportText += '</ul>';
+    } else if (selectedReport === 'facturacion') {
+      reportText = '<h3>Facturación y Cuentas</h3>';
+      reportText += '<p>Total de ingresos del mes: $50,000</p>';
+      reportText += '<p>Gastos operativos: $20,000</p>';
+      reportText += '<p>Beneficio neto: $30,000</p>';
+    } else if (selectedReport === 'ventas') {
+      reportText = '<h3>Reportes de Ventas</h3>';
+      reportText += '<h4>Factores de Ventas</h4>';
+      reportText += '<ul>';
+      reportText += '<li>Calidad del Servicio: 8.5</li>';
+      reportText += '<li>Ofertas y Promociones: 9.0</li>';
+      reportText += '<li>Feedback de Clientes: 8.0</li>';
+      reportText += '</ul>';
+      reportText += '<h4>Comparación Mensual</h4>';
+      reportText += '<p>Ventas de este mes: $25,000</p>';
+      reportText += '<p>Ventas del mes anterior: $20,000</p>';
+    }else if (selectedReport === 'feedback') {
+      reportText = '<h3>Feedback de Huéspedes</h3>';
+      reportText += '<h4>Comentarios Recientes</h4>';
+      reportText += '<ul>';
+      reportText += '<li>"Excelente estancia, personal amable." - Huésped 1</li>';
+      reportText += '<li>"Las instalaciones son increíbles." - Huésped 2</li>';
+      reportText += '<li>"Mejorar la variedad en el menú del restaurante." - Huésped 3</li>';
+      reportText += '</ul>';
+    }
+      reportOutput.innerHTML = reportText;
+    });
+  </script>
+  <footer>
+    <p class = "copyright">&copy Copyright Hotel ABC-2015</p>
+
+ </footer>
+</body>
+</html>
